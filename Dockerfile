@@ -15,7 +15,7 @@ RUN ls -al /opt/app-root/
 USER 1001
 
 # TODO: Set the default port for applications built using this image
-EXPOSE 8080
+EXPOSE 80
 
 # TODO: Set the default CMD for the image
 CMD ["python", "/opt/app-root/app.py"]
