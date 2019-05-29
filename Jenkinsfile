@@ -7,11 +7,15 @@ pipeline {
 				sh "docker build -t webapp ."
 			}
 		}
+		stage("Start Container") {
+			steps {
+				sh "docker run -d --rm --name webapp -p 80:8080"
+			}
+		}
 		stage("Test") {
 			steps {
 				echo "Running tests"
-				sh "uname -a"
-				sh "hostname"
+				sh "curl http://webapp"
 			}
 		}
 		stage("Deploy") {
