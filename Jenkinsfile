@@ -1,14 +1,10 @@
 pipeline {
 	agent { dockerfile true }
 	stages {
-		stage("Build") {
-			steps {
-				echo "Building app"
-			}
-		}
 		stage("Test") {
 			steps {
 				echo "Running tests"
+				sh("ps -ef")
 			}
 		}
 		stage("Deploy") {
