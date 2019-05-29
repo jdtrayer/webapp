@@ -8,7 +8,9 @@ pipeline {
 		stage("Test") {
 			steps {
 				echo "Running tests"
-				sh("docker ps")
+				sh "uname -a"
+				sh "hostname"
+				sh "docker ps"
 			}
 		}
 		stage("Deploy") {
