@@ -1,12 +1,10 @@
 pipeline {
-	agent none
+	agent any
 	stages {
 		stage("Build") {
 			steps {
 				echo "Building container"
-				node('docker') {
-					sh "docker build -t webapp ."
-				}
+				sh "docker build -t webapp ."
 			}
 		}
 		stage("Test") {
