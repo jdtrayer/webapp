@@ -1,7 +1,7 @@
 pipeline {
 	agent { 
 		dockerfile {
-			label "webapp"
+			additionalBuildArgs '-t webapp:jenkins'
 		}
 	}
 	stages {
