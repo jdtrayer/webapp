@@ -4,7 +4,9 @@ pipeline {
 		stage("Build") {
 			steps {
 				echo "Building container"
-				sh "docker build ."
+				node('docker') {
+					sh "docker build -t webapp ."
+				}
 			}
 		}
 		stage("Test") {
