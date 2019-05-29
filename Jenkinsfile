@@ -1,16 +1,17 @@
 pipeline {
-	agent { 
-		dockerfile {
-			additionalBuildArgs '-t webapp:jenkins'
-		}
-	}
+	agent none
 	stages {
+		stage("Build") {
+			steps {
+				echo "Building container"
+				sh "docker build ."
+			}
+		}
 		stage("Test") {
 			steps {
 				echo "Running tests"
 				sh "uname -a"
 				sh "hostname"
-				sh "docker ps"
 			}
 		}
 		stage("Deploy") {
@@ -21,4 +22,3 @@ pipeline {
 		}
 	}
 }
-
