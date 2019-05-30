@@ -15,7 +15,7 @@ pipeline {
 		stage("Test") {
 			steps {
 				echo "Running tests"
-				sh "curl http://webapp"
+				sh "curl http://192.168.1.10"
 			}
 		}
 		stage("Deploy") {
