@@ -15,6 +15,7 @@ pipeline {
 		stage("Test") {
 			steps {
 				echo "Running tests"
+				sh "sleep 30"
 				sh "curl http://192.168.1.10"
 			}
 		}
