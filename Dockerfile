@@ -1,5 +1,5 @@
 # webapp
-FROM openshift/base-centos7
+FROM docker.io/openshift/base-centos7
 
 # TODO: Put the maintainer name in the image metadata
 MAINTAINER Jeb Trayer <jdtrayer@gmail.com>
