@@ -9,7 +9,7 @@ pipeline {
 		}
 		stage("Start Container") {
 			steps {
-				sh "docker run -d --rm --name webapp -p 80:8080"
+				sh "docker run -d --rm --name webapp -p 80:8080 webapp"
 			}
 		}
 		stage("Test") {
