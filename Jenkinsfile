@@ -4,7 +4,7 @@ pipeline {
 		stage("Build") {
 			steps {
 				echo "Building container"
-				sh "cat /etc/resolve.conf"
+				sh "cat /etc/resolv.conf"
 				sh "ping www.google.com"
 				sh "docker build -t webapp ."
 			}
