@@ -1,0 +1,13 @@
+# webapp
+FROM webapp
+
+MAINTAINER Jeb Trayer <jdtrayer@gmail.com>
+
+ADD ./tests /opt/app-tests/
+
+RUN ls -al /opt/app-tests
+
+# This default user is created in the openshift/base-centos7 image
+USER 1001
+
+CMD ["python", "/opt/app-tests/test_app.py"]
