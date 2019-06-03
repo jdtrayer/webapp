@@ -39,7 +39,7 @@ pipeline {
 	post {
 		always {
 			echo "killing any containers"
-			sh "docker kill webapp"
+			sh "docker kill webapp webapp_unittest"
 		}
 	}
 }
