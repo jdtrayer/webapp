@@ -3,26 +3,36 @@ pipeline {
 	stages {
 		stage("Build") {
 			steps {
-				echo "Building container"
+				echo "Building Container"
 				sh "docker build -t webapp ."
+			}
+		}
+		stage("Unit Test") {
+			steps {
+				echo "Building Unit Test Container"
+				sh "docker build -t webapp_unittest -f Dockerfile_Unittest ."
+				sh "mkdir test-results"
+				sh "docker run --name webapp_unittest webapp_unittest"
+				sh "docker kill webapp_unittest"
 			}
 		}
 		stage("Start Container") {
 			steps {
+				echo "Starting webapp container"
 				sh "docker run -d --rm --name webapp -p 80:8080 webapp"
 			}
 		}
-		stage("Test") {
+		stage("Functional Testing") {
 			steps {
-				echo "Running tests"
+				echo "Starting functional testing"
 				sh "sleep 30"
 				sh "curl http://192.168.1.50"
 			}
 		}
 		stage("Deploy") {
 			steps {
-				echo "Deploying application"
 				input("ok to deploy")
+				echo "Deploying application"
 			}
 		}
 	}
