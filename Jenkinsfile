@@ -42,6 +42,7 @@ pipeline {
 		always {
 			echo "killing any containers"
 			sh "docker kill webapp webapp_unittest"
+			sh "rm -rf test-results"
 		}
 	}
 }
