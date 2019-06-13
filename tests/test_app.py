@@ -13,10 +13,10 @@ class TestApp(unittest.TestCase):
         pass
 
     def test_hello(self):
-        self.assertContains("Hello Ryan", app.hello())
+        self.assertIn("Hello Ryan", app.hello())
 
     def test_hello_bad(self):
-        self.assertContains("Hello Jeb", app.hello())
+        self.assertIn("Hello Jeb", app.hello())
 
 if __name__ == "__main__":
     unittest.main()
