@@ -11,7 +11,7 @@ pipeline {
 			steps {
 				echo "Building Unit Test Container"
 				sh "docker build -t webapp_unittest -f Dockerfile_Unittest ."
-				sh "docker run --name webapp_unittest webapp_unittest"
+				sh "docker run --rm --name webapp_unittest webapp_unittest"
 				sh "docker kill webapp_unittest"
 			}
 		}
