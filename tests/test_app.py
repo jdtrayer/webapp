@@ -1,25 +1,11 @@
-import unittest
 import sys
 
 sys.path.append("/opt/app-root")
 
 import app
 
-class TestApp(unittest.TestCase):
-    def setUp(self):
-        pass
+def test_hello():
+    assert "Hello Ryan" in app.hello()
 
-    def tearDown(self):
-        pass
-
-    def test_hello(self):
-        self.assertIn("Hello Ryan", app.hello())
-
-    def test_hello_bad(self):
-        #self.assertIn("Hello Jeb", app.hello())
-        pass
-
-if __name__ == "__main__":
-    import xmlrunner
-    unittest.main(testRunner=xmlrunner.XMLTestRunner(output="test-reports.xml"))
-
+def test_hello_bad():
+    assert "Hello Jeb" in app.hello()

@@ -3,11 +3,17 @@ FROM webapp
 
 MAINTAINER Jeb Trayer <jdtrayer@gmail.com>
 
-ADD ./tests /opt/app-tests/
+USER 0
 
-RUN ls -al /opt/app-tests
+RUN yum -y install  pytest && yum clean all
 
 # This default user is created in the openshift/base-centos7 image
 USER 1001
 
-CMD ["python", "/opt/app-tests/test_app.py"]
+ADD ./tests /opt/app-tests/
+
+USER 0
+RUN chown 1001:1001 /opt/app-tests
+USER 1001
+
+CMD ["py.test", "--junitxml=/opt/app-tests/results.xml", "/opt/app-tests/test_app.py"]
