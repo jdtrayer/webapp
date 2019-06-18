@@ -13,7 +13,6 @@ pipeline {
 				sh "docker build -t webapp_unittest -f Dockerfile_Unittest ."
 				sh "docker run --name webapp_unittest webapp_unittest"
 				sh "docker cp webapp_unittest:/opt/app-tests/results.xml ."
-				junit testResults: 'results.xml'
 			}
 		}
 		stage("Start Container") {
@@ -38,6 +37,7 @@ pipeline {
 	}
 	post {
 		always {
+			junit testResults: 'results.xml'
 			echo "cleaning up any containers"
 			sh "docker kill webapp webapp_unittest || true"
 			sh "docker rm webapp webapp_unittest || true"
