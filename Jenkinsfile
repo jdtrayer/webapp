@@ -14,7 +14,6 @@ pipeline {
 				sh "docker run --name webapp_unittest webapp_unittest || true"
 				sh "docker cp webapp_unittest:/opt/app-tests/results.xml ."
 				junit testResults: 'results.xml'
-				recordIssues tool: issues(pattern: 'results.xml')
 			}
 		}
 		stage("Start Container") {
