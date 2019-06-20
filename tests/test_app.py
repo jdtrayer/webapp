@@ -13,3 +13,7 @@ def test_hello_bad():
 def test_one_eq_1():
     assert 1 == 2
 
+
+def test_two_eq_2():
+    assert 1 == 2
+
