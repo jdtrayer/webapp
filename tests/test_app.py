@@ -9,3 +9,7 @@ def test_hello():
 
 def test_hello_bad():
     assert True
+
+def test_one_eq_1():
+    assert 1 = 1
+
